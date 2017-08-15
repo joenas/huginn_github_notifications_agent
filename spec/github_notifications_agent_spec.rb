@@ -42,6 +42,12 @@ describe Agents::GithubNotificationsAgent do
     it "creates an Events with the received data" do
       @checker.check()
       expect(Event.last.payload['url']).to eq "https://api.github.com/notifications/threads/1"
+
+      # Adding subject.url_web
+      expect(@checker.events.first.payload['subject']['url_web']).to eq "https://github.com/octocat/Hello-World/pull/10"
+      expect(@checker.events.first.payload['subject']['repo_name']).to eq "octocat/Hello-World"
+      expect(@checker.events.first.payload['subject']['title']).to eq "Greetings"
+      expect(@checker.events.last.payload['subject']['url_web']).to eq "https://github.com/octocat/Hello-World/issues/123"
     end
   end
 

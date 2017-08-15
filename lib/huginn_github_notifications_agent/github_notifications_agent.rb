@@ -40,11 +40,17 @@ module Agents
       response = HTTParty.get base_url, request_options
       # If there are no new notifications, you will see a "304 Not Modified" response
       return if response.code == 304
-      notifications = JSON.parse response.body
+      notifications = JSON.parse(response.body)
       if response.code > 400
         error("Error during http request: #{response.body}")
         return
-      elsif emit_single_event?
+      end
+      notifications.each do |notif|
+        data = notif['subject'].merge(repo_name: notif['repository']['full_name'])
+        subject = ::HuginnGithubNotificationsAgent::Subject.new(data)
+        notif['subject'] = subject.to_h
+      end
+      if emit_single_event?
         create_event payload: {notifications: notifications}
       else
         notifications.each {|notification| create_event payload: notification}
