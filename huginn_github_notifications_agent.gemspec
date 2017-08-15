@@ -4,14 +4,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "huginn_github_notifications_agent"
-  spec.version       = '0.1'
+  spec.version       = '0.0.1'
   spec.authors       = ["joenas"]
   spec.email         = ["jon@jonnev.se"]
 
-  spec.summary       = %q{Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{Write a longer description or delete this line.}
+  spec.summary       = %q{Huginn agent to fetch Github notifications}
+  #spec.description   = %q{Write a longer description or delete this line.}
 
-  spec.homepage      = "https://github.com/[my-github-username]/huginn_github_notifications_agent"
+  spec.homepage      = "https://github.com/joenas/huginn_github_notifications_agent"
 
   spec.license       = "MIT"
 
