@@ -17,6 +17,14 @@ module Agents
 
       More options might be added for the [API](https://developer.github.com/v3/activity/notifications/#list-your-notifications).
 
+      This agent also adds two more fields to `subject` in the response, `url_web` and `repo_name`. These are for convenience, if you want to link to the updated resource for example.
+      ```
+      "subject": {
+        "url_web": "https://github.com/joenas/huginn_github_notifications/pull/1234",
+        "repo_name": "joenas/huginn_github_notifications"
+      }
+      ```
+
     MD
 
     def default_options

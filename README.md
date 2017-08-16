@@ -10,6 +10,8 @@ Add this string to your Huginn's .env `ADDITIONAL_GEMS` configuration:
 huginn_github_notifications_agent
 # when only using this agent gem it should look like hits:
 ADDITIONAL_GEMS=huginn_github_notifications_agent
+# if you want to use the latest, non-released code (master) add this instead:
+ADDITIONAL_GEMS=huginn_github_notifications_agent(github: joenas/huginn_github_notifications_agent)
 ```
 
 And then execute:
@@ -27,6 +29,14 @@ To emit all new notifications as a single event, change `events` to `single`. Th
 To fetch all (unread) notifications, change `last_modified` to `false`. Default behaviour is to only fetch notifications that are updated since last run.
 
 More options might be added for the [API](https://developer.github.com/v3/activity/notifications/#list-your-notifications).
+
+This agent also adds two more fields to `subject` in the response, `url_web` and `repo_name`. These are for convenience, if you want to link to the updated resource for example.
+```json
+"subject": {
+  "url_web": "https://github.com/joenas/huginn_github_notifications/pull/1234",
+  "repo_name": "joenas/huginn_github_notifications"
+}
+```
 
 ## Development
 
