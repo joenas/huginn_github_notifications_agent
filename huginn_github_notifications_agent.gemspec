@@ -24,6 +24,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 12.3"
 
-  spec.add_runtime_dependency "huginn_agent"
+  spec.add_runtime_dependency "huginn_agent", '0.6.1'
   spec.add_runtime_dependency 'virtus', '~> 1.0'
 end
