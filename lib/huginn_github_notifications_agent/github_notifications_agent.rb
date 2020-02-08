@@ -86,23 +86,19 @@ module Agents
 
     def request_options
       {
-        headers: default_headers.merge(extra_headers),
-        query: query_parameters
+        headers: default_headers.merge(extra_headers)
       }
     end
 
     def default_headers
-      {"User-Agent" => "Huginn (https://github.com/cantino/huginn)"}
+      {
+        "User-Agent" => "Huginn (https://github.com/cantino/huginn)",
+        "Authorization" => "token " + interpolated['access_token']
+      }
     end
 
     def extra_headers
       use_last_modified? ? {'If-Modified-Since' => memory[:last_modified]} : {}
-    end
-
-    def query_parameters
-      {
-        access_token: interpolated['access_token']
-      }
     end
   end
 end
