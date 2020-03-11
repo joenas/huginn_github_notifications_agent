@@ -1,6 +1,6 @@
 branches:
   only:
-  - master
+    - master
 sudo: false
 language: ruby
 services:
@@ -16,6 +16,10 @@ rvm:
   - 2.4.9
   - 2.5.7
   - 2.6.5
+jobs:
+  include:
+    - rvm: 2.6.5
+      script: bundle exec rubocop
 cache: bundler
 script: bundle exec rake
 notifications:
