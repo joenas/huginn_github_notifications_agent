@@ -9,6 +9,9 @@
 #
 # See https://github.com/rubocop-hq/rubocop/blob/master/manual/configuration.md
 
+inherit_mode:
+  merge:
+    - Exclude
 AllCops:
   Exclude:
     - spec/huginn/**/*

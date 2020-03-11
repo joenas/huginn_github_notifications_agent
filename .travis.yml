@@ -20,6 +20,7 @@ jobs:
   include:
     - rvm: 2.6.5
       script: bundle exec rubocop
+      services:
 cache: bundler
 script: bundle exec rake
 notifications:
