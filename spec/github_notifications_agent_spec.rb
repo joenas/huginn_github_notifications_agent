@@ -54,8 +54,10 @@ describe Agents::GithubNotificationsAgent do
   describe "helpers" do
     it "should generate a correct request options hash on the first run" do
       expect(@checker.send(:request_options)).to eq({
-        headers: {"User-Agent" => "Huginn (https://github.com/cantino/huginn)"},
-        query: {access_token: users(:jane).user_credentials.last.credential_value}
+        headers: {
+          "User-Agent" => "Huginn (https://github.com/cantino/huginn)",
+          "Authorization" => "token #{users(:jane).user_credentials.last.credential_value}"
+        }
       })
     end
 
@@ -64,8 +66,11 @@ describe Agents::GithubNotificationsAgent do
       @checker.memory[:last_modified] = time
       @checker.save
       expect(@checker.reload.send(:request_options)).to eq({
-        headers: {"User-Agent" => "Huginn (https://github.com/cantino/huginn)", "If-Modified-Since" => time},
-        query: {access_token: users(:jane).user_credentials.last.credential_value}
+        headers: {
+          "User-Agent" => "Huginn (https://github.com/cantino/huginn)",
+          "If-Modified-Since" => time,
+          "Authorization" => "token #{users(:jane).user_credentials.last.credential_value}"
+        },
       })
     end
 
@@ -74,8 +79,10 @@ describe Agents::GithubNotificationsAgent do
       @checker.memory[:last_modified] = Time.now
       @checker.save
       expect(@checker.reload.send(:request_options)).to eq({
-        headers: {"User-Agent" => "Huginn (https://github.com/cantino/huginn)"},
-        query: {access_token: users(:jane).user_credentials.last.credential_value}
+        headers: {
+          "User-Agent" => "Huginn (https://github.com/cantino/huginn)",
+          "Authorization" => "token #{users(:jane).user_credentials.last.credential_value}"
+        },
       })
     end
   end
