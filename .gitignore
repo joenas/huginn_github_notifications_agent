@@ -3,3 +3,4 @@ spec/huginn
 Gemfile.lock
 *.gem
 coverage
+.ruby-version
