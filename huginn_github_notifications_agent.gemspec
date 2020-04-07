@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = 'huginn_github_notifications_agent'
-  spec.version       = '0.0.1'
+  spec.version       = '0.0.2'
   spec.authors       = ['joenas']
   spec.email         = ['jon@jonnev.se']
 
