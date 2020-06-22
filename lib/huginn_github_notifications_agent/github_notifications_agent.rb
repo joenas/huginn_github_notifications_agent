@@ -37,9 +37,7 @@ module Agents
     end
 
     def validate_options
-      unless options['access_token'].present?
-        errors.add(:base, 'access_token is required ')
-      end
+      errors.add(:base, 'access_token is required ') unless options['access_token'].present?
       # rubocop:disable Style/GuardClause
       if last_modified.present? && boolify(last_modified).nil?
         errors.add(:base, 'last_modified must be a boolean value')

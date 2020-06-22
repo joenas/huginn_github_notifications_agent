@@ -81,9 +81,7 @@ describe Agents::GithubNotificationsAgent do
       })
     end
 
-    # rubocop:disable Layout/LineLength
     it 'should generate a correct request options hash on consecutive runs with last_modified == false' do
-      # rubocop:enable Layout/LineLength
       @checker.options['last_modified'] = 'false'
       @checker.memory[:last_modified] = Time.now
       @checker.save
