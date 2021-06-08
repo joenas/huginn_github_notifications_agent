@@ -26,5 +26,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop', '~> 0.83.0'
 
   spec.add_runtime_dependency 'huginn_agent'
-  spec.add_runtime_dependency 'virtus', '~> 1.0'
+  spec.add_runtime_dependency 'virtus', '~> 2.0'
 end
