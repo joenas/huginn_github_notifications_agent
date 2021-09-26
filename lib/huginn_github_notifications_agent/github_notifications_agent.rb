@@ -106,7 +106,7 @@ module Agents
     def default_headers
       {
         'User-Agent' => 'Huginn (https://github.com/cantino/huginn)',
-        'Authorization' => 'token ' + interpolated['access_token']
+        'Authorization' => "token #{interpolated['access_token']}"
       }
     end
 
